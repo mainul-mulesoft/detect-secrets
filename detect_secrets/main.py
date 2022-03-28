@@ -50,7 +50,7 @@ def handle_scan_action(args: argparse.Namespace) -> None:
         if isinstance(args.string, bool):
             # Support stdin usage, rather than specifying on CLI.
             line = sys.stdin.read().splitlines()[0]
-
+        print(line)
         print(scan_adhoc_string(line))
         return
 
@@ -96,7 +96,6 @@ def scan_adhoc_string(line: str) -> str:
         plugin.secret_type: 'False'
         for plugin in registered_plugins
     }
-    print(line)
     for secret in scan_line(line):
         results[secret.type] = (
             plugins.initialize.from_secret_type(secret.type)    # type: ignore
