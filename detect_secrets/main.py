@@ -96,7 +96,7 @@ def scan_adhoc_string(line: str) -> str:
         plugin.secret_type: 'False'
         for plugin in registered_plugins
     }
-
+    print(line)
     for secret in scan_line(line):
         results[secret.type] = (
             plugins.initialize.from_secret_type(secret.type)    # type: ignore
