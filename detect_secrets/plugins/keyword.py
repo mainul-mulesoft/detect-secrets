@@ -54,13 +54,9 @@ DENYLIST = (
     'key_?pass',
     'password',
     'passwd',
-    'client?secret',
     'cliensecret',
-    'client.ecret',
     'secret',
-    'Secret',
     'pwd',
-    'secret',
     'contraseña',
     'contrasena',
 )
