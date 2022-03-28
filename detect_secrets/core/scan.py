@@ -152,6 +152,10 @@ def scan_file(filename: str) -> Generator[PotentialSecret, None, None]:
                 lines=list(enumerate(lines, start=1)),
                 filename=filename,
             ):
+                print("Secret File name ::" + secret.filename)
+                print("Secret line ::" + str(secret.line_number))
+                print("Secret is_verified ::" + str(secret.is_verified))
+                print("Secret type ::" + str(secret.type))
                 has_secret = True
                 yield secret
 

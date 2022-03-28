@@ -73,11 +73,6 @@ class SecretsCollection:
 
     def scan_file(self, filename: str) -> None:
         for secret in scan.scan_file(os.path.join(self.root, filename)):
-            print("Secret File name ::" + secret.filename)
-            print("Secret line ::" + str(secret.line_number))
-            print("Secret is_verified ::" + str(secret.is_verified))
-            print("Secret type ::" + str(secret.type))
-            print("selt file name:::" + filename)
             self[filename].add(secret)
 
     def scan_diff(self, diff: str) -> None:
