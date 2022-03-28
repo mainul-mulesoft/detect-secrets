@@ -15,6 +15,7 @@ def from_secret_type(secret_type: str) -> Plugin:
     """
     :raises: TypeError
     """
+    print("Secret Type ###### " + secret_type)
     try:
         plugin_type = get_mapping_from_secret_type_to_class()[secret_type]
     except KeyError:
