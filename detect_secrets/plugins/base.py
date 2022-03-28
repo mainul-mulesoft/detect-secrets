@@ -54,7 +54,7 @@ class BasePlugin(metaclass=ABCMeta):
             print("Secret Type ::::::: " + self.secret_type)
             print("Secret filename ::::::: " + filename)
             print("Secret match ::::::: " + match)
-            print("Secret line_number ::::::: " + line_number)
+            print("Secret line_number ::::::: " + str(line_number))
             output.add(
                 PotentialSecret(
                     type=self.secret_type,
