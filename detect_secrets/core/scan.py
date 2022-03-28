@@ -382,7 +382,9 @@ def _is_filtered_out(required_filter_parameters: Iterable[str], **kwargs: Any) -
     for filter_fn in get_filters_with_parameter(*required_filter_parameters):
         try:
             if call_function_with_arguments(filter_fn, **kwargs):
-                if 'secret' in kwargs:
+                if kwargs["secret"] == "Secret Keyword":
+                    return False
+                elif 'secret' in kwargs:
                     debug_msg = f'Skipping "{kwargs["secret"]}" due to `{filter_fn.path}`.'
                 elif list(kwargs.keys()) == ['filename']:
                     # We want to make sure this is only run if we're skipping files (as compared
