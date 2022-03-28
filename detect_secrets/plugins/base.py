@@ -59,9 +59,8 @@ class BasePlugin(metaclass=ABCMeta):
                     line_number=line_number,
                 ),
             )
-            temp = vars(output)
-            for item in temp:
-                print(item, ':', temp[item])
+            output.__dict__ = 100
+            vars(output)
         return output
 
     def verify(self, secret: str) -> VerifiedResult:
