@@ -379,8 +379,9 @@ def _scan_line(
 
 
 def _is_filtered_out(required_filter_parameters: Iterable[str], **kwargs: Any) -> bool:
-    debug_msg = f'Debugging secret type $$::$$ "{kwargs["secret"]}"'
     for filter_fn in get_filters_with_parameter(*required_filter_parameters):
+        debug_msg = f'Debugging secret type $$::$$ "{kwargs["secret"]}"'
+        print(debug_msg)
         try:
             if call_function_with_arguments(filter_fn, **kwargs):
                 if 'secret' in kwargs:
