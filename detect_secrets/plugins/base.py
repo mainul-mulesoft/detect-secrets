@@ -59,7 +59,7 @@ class BasePlugin(metaclass=ABCMeta):
                     line_number=line_number,
                 ),
             )
-            print(vars(output))
+            print(vars(output.__dict__))
         return output
 
     def verify(self, secret: str) -> VerifiedResult:
