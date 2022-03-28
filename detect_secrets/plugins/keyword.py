@@ -176,7 +176,6 @@ FOLLOWED_BY_EQUAL_SIGNS_OPTIONALWHITESPACE_REGEX = re.compile(
         denylist=DENYLIST_REGEX,
         closing=CLOSING,
         quote=QUOTE,
-        whitespace=OPTIONAL_WHITESPACE,
         secret=SECRET,
     ),
     flags=re.IGNORECASE,
