@@ -21,7 +21,8 @@ class FileType(Enum):
     INI = 15
     PROPERTIES = 16
     TOML = 17
-    OTHER = 18
+    XML = 18
+    OTHER = 19
 
 
 def determine_file_type(filename: str) -> FileType:
