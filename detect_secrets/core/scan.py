@@ -355,6 +355,11 @@ def _scan_line(
         line_number=line_number,
         **kwargs,
     )
+    for secret in secrets:
+        print("Secret File name ::" + secret.filename)
+        print("Secret line ::" + str(secret.line_number))
+        print("Secret is_verified ::" + str(secret.is_verified))
+        print("Secret type ::" + str(secret.type))
     if not secrets:
         return
 
@@ -389,7 +394,6 @@ def _is_filtered_out(required_filter_parameters: Iterable[str], **kwargs: Any) -
         except TypeError:
             # Skipping non-compatible filters
             pass
-    print("Arguments ###### " + str(kwargs))
     return False
 
 
