@@ -70,6 +70,12 @@ class BasePlugin(metaclass=ABCMeta):
         }
 
     def format_scan_result(self, secret: PotentialSecret) -> str:
+        
+        print("Secret File name ::" + secret.filename)
+        print("Secret line ::" + str(secret.line_number))
+        print("Secret is_verified ::" + str(secret.is_verified))
+        print("Secret type ::" + str(secret.type))
+        
         try:
             verification_level = VerifiedResult(
                 get_settings().filters[
@@ -79,11 +85,6 @@ class BasePlugin(metaclass=ABCMeta):
         except KeyError:
             verification_level = VerifiedResult.VERIFIED_FALSE
 
-        print("Secret File name ::" + secret.filename)
-        print("Secret line ::" + str(secret.line_number))
-        print("Secret is_verified ::" + str(secret.is_verified))
-        print("Secret type ::" + str(secret.type))
-        print("Secret verification level ::" + str(verification_level))
         if verification_level == VerifiedResult.VERIFIED_FALSE:
             # This is a secret, but we can't verify it. So this is the best we can do.
             return 'True'
