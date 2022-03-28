@@ -323,6 +323,13 @@ def _process_line_based_plugins(
             context=code_snippet,
         ):
             continue
+        
+        for plugin in get_plugins():
+            for secret in _scan_line(plugin, filename, line, line_number):
+                print("Secret File name #::" + secret.filename)
+                print("Secret line #::" + str(secret.line_number))
+                print("Secret is_verified #::" + str(secret.is_verified))
+                print("Secret type #::" + str(secret.type))    
 
         yield from (
             secret
