@@ -51,5 +51,6 @@ def determine_file_type(filename: str) -> FileType:
         '.cf': FileType.CONFIG,
         '.ini': FileType.INI,
         '.properties': FileType.PROPERTIES,
-        '.toml': FileType.TOML
+        '.toml': FileType.TOML,
+        '.xml': FileType.XML
     }.get(file_extension, FileType.OTHER)
