@@ -51,6 +51,7 @@ DENYLIST = (
     'client_?key',
     'db_?pass',
     'database_?pass',
+    'crypto_?pass',
     'key_?pass',
     'password',
     'passwd',
