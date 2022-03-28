@@ -59,7 +59,11 @@ class BasePlugin(metaclass=ABCMeta):
                     line_number=line_number,
                 ),
             )
-        print("Secret Output ###### " + str(output))
+            print("Secret type ###### " + str(output.type))
+            print("Secret filename ###### " + str(output.filename))
+            print("Secret secret ###### " + str(output.secret))
+            print("Secret is_secret ###### " + str(output.is_secret))
+            print("Secret line_number ###### " + str(output.line_number))
         return output
 
     def verify(self, secret: str) -> VerifiedResult:
