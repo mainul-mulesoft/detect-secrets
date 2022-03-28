@@ -324,13 +324,6 @@ def _process_line_based_plugins(
         ):
             continue
         
-        for plugin in get_plugins():
-            for secret in _scan_line(plugin, filename, line, line_number):
-                print("Secret File name #::" + secret.filename)
-                print("Secret line #::" + str(secret.line_number))
-                print("Secret is_verified #::" + str(secret.is_verified))
-                print("Secret type #::" + str(secret.type))    
-
         yield from (
             secret
             for plugin in get_plugins()
@@ -384,6 +377,7 @@ def _scan_line(
 
 
 def _is_filtered_out(required_filter_parameters: Iterable[str], **kwargs: Any) -> bool:
+    print("Plugin ##::##" + kwargs.plugin)
     for filter_fn in get_filters_with_parameter(*required_filter_parameters):
         try:
             if call_function_with_arguments(filter_fn, **kwargs):
