@@ -391,6 +391,7 @@ def _is_filtered_out(required_filter_parameters: Iterable[str], **kwargs: Any) -
                     debug_msg = f'Skipping secret due to `{filter_fn.path}`.'
 
                 log.info(debug_msg)
+                print("Debug message :: " + debug_msg)
                 return True
         except TypeError:
             # Skipping non-compatible filters
