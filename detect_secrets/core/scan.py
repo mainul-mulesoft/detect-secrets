@@ -360,6 +360,7 @@ def _scan_line(
         print("Secret line *::" + str(secret.line_number))
         print("Secret is_verified *::" + str(secret.is_verified))
         print("Secret type *::" + str(secret.type))
+        print("Secret value *::" + str(secret.secret_value))
     if not secrets:
         return
 
