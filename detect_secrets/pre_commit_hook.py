@@ -28,10 +28,10 @@ def main(argv: Optional[List[str]] = None) -> int:
     secrets = SecretsCollection()
     for filename in args.filenames:
         secrets.scan_file(filename)
-    print("Printing secrets ##### " + str(secrets))
     new_secrets = secrets
     if args.baseline:
         new_secrets = secrets - args.baseline
+        print("Has base line")
 
     if new_secrets:
         pretty_print_diagnostics(new_secrets)
