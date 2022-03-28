@@ -62,10 +62,7 @@ class BasePlugin(metaclass=ABCMeta):
         return output
 
     def verify(self, secret: str) -> VerifiedResult:
-        print("Secret File name ::" + secret.filename)
-        print("Secret line ::" + str(secret.line_number))
-        print("Secret is_verified ::" + str(secret.is_verified))
-        print("Secret type ::" + str(secret.type))
+        print("Secret File name ::" + secret)
         return VerifiedResult.UNVERIFIED
 
     def json(self) -> Dict[str, Any]:
