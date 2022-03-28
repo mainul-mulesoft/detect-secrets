@@ -96,6 +96,11 @@ def scan_adhoc_string(line: str) -> str:
         for plugin in registered_plugins
     }
     for secret in scan_line(line):
+        print("Secret File name ::" + secret.filename)
+        print("Secret line ::" + str(secret.line_number))
+        print("Secret is_verified ::" + str(secret.is_verified))
+        print("Secret type ::" + str(secret.type))
+        
         results[secret.type] = (
             plugins.initialize.from_secret_type(secret.type)    # type: ignore
             .format_scan_result(secret)
