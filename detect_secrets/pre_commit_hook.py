@@ -143,9 +143,7 @@ def pretty_print_diagnostics(secrets: SecretsCollection, width: int = 80) -> Non
         width=width,
     )
     for suggestion in [
-        'For information about putting your secrets in a safer place, '
-        f'please ask {os.environ.get("DETECT_SECRETS_SECURITY_TEAM", "in #security")}',
-
+        
         'Mark false positives with an inline '
         f'`{color.colorize("pragma: allowlist secret", color.AnsiColor.BOLD)}` comment',
     ]:
