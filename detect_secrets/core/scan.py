@@ -383,6 +383,8 @@ def _is_filtered_out(required_filter_parameters: Iterable[str], **kwargs: Any) -
         try:
             if call_function_with_arguments(filter_fn, **kwargs):
                 if kwargs["secret"] == "Secret Keyword":
+                    debug_msg = f'Debugging secret type $$::$$ "{kwargs["type"]}"'
+                    print(debug_msg)
                     return False
                 elif 'secret' in kwargs:
                     debug_msg = f'Skipping "{kwargs["secret"]}" due to `{filter_fn.path}`.'
@@ -395,8 +397,6 @@ def _is_filtered_out(required_filter_parameters: Iterable[str], **kwargs: Any) -
 
                 log.info(debug_msg)
                 print("Debug message :: " + debug_msg)
-                debug_msg = f'Debugging secret type $$::$$ "{kwargs["type"]}"'
-                print(debug_msg)
                 return True
         except TypeError:
             # Skipping non-compatible filters
