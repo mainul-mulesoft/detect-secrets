@@ -308,7 +308,7 @@ class KeywordDetector(BasePlugin):
                 match = denylist_regex.search(string)
                 if match:
                     has_results = True
-                    print(string + " :::: " + group_number)
+                    print(string + " :::: " + str(group_number))
                     yield match.group(group_number)
 
             if has_results:
