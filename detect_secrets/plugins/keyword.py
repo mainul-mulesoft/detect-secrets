@@ -322,7 +322,7 @@ class KeywordDetector(BasePlugin):
         **kwargs: Any,
     ) -> Set[PotentialSecret]:
         filetype = determine_file_type(filename)
-        print("File type::" + str(filetype))
+        print("File Name::" + str(filename))
         denylist_regex_to_group = REGEX_BY_FILETYPE.get(filetype, QUOTES_REQUIRED_DENYLIST_REGEX_TO_GROUP)  # noqa: E501
         return super().analyze_line(
             filename=filename,
