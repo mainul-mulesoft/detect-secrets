@@ -50,7 +50,6 @@ def handle_scan_action(args: argparse.Namespace) -> None:
         if isinstance(args.string, bool):
             # Support stdin usage, rather than specifying on CLI.
             line = sys.stdin.read().splitlines()[0]
-        print("Printing line ###### " + line)
         print(scan_adhoc_string(line))
         return
 
