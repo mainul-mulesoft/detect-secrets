@@ -165,6 +165,23 @@ FOLLOWED_BY_EQUAL_SIGNS_REGEX = re.compile(
     ),
     flags=re.IGNORECASE,
 )
+
+FOLLOWED_BY_EQUAL_SIGNS_OPTIONALWHITESPACE_REGEX = re.compile(
+    # e.g. my_password = bar
+    # e.g. my_password == "bar" or my_password != "bar" or my_password === "bar"
+    # or my_password !== "bar"
+    # e.g. my_password == 'bar' or my_password != 'bar' or my_password === 'bar'
+    # or my_password !== 'bar'
+    r'{denylist}({closing})?{optional_whitespace}(={{1,3}}|!==?){optional_whitespace}({quote}?)({secret})(\4)'.format(  # noqa: E501
+        denylist=DENYLIST_REGEX,
+        closing=CLOSING,
+        quote=QUOTE,
+        whitespace=OPTIONAL_WHITESPACE,
+        secret=SECRET,
+    ),
+    flags=re.IGNORECASE,
+)
+
 FOLLOWED_BY_EQUAL_SIGNS_QUOTES_REQUIRED_REGEX = re.compile(
     # e.g. my_password = "bar"
     # e.g. my_password == "bar" or my_password != "bar" or my_password === "bar"
@@ -209,6 +226,11 @@ CONFIG_DENYLIST_REGEX_TO_GROUP = {
     FOLLOWED_BY_EQUAL_SIGNS_REGEX: 5,
     FOLLOWED_BY_QUOTES_AND_SEMICOLON_REGEX: 3,
 }
+
+XML_DENYLIST_REGEX_TO_GROUP = {
+    FOLLOWED_BY_EQUAL_SIGNS_OPTIONALWHITESPACE_REGEX: 6,
+}
+
 GOLANG_DENYLIST_REGEX_TO_GROUP = {
     FOLLOWED_BY_COLON_EQUAL_SIGNS_REGEX: 4,
     PRECEDED_BY_EQUAL_COMPARISON_SIGNS_QUOTES_REQUIRED_REGEX: 2,
@@ -245,7 +267,7 @@ REGEX_BY_FILETYPE = {
     FileType.INI: CONFIG_DENYLIST_REGEX_TO_GROUP,
     FileType.PROPERTIES: CONFIG_DENYLIST_REGEX_TO_GROUP,
     FileType.TOML: CONFIG_DENYLIST_REGEX_TO_GROUP,
-    FileType.XML: CONFIG_DENYLIST_REGEX_TO_GROUP,
+    FileType.XML: XML_DENYLIST_REGEX_TO_GROUP,
 }
 
 
