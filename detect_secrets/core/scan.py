@@ -381,9 +381,6 @@ def _scan_line(
 def _is_filtered_out(required_filter_parameters: Iterable[str], **kwargs: Any) -> bool:
     for filter_fn in get_filters_with_parameter(*required_filter_parameters):
         try:
-            debug_msg = f'Debugging secret type $$::$$ "{kwargs["secret"]}"'
-            print(debug_msg)
-        
             if call_function_with_arguments(filter_fn, **kwargs):
                 if 'secret' in kwargs:
                     debug_msg = f'Skipping "{kwargs["secret"]}" due to `{filter_fn.path}`.'
@@ -396,6 +393,8 @@ def _is_filtered_out(required_filter_parameters: Iterable[str], **kwargs: Any) -
 
                 log.info(debug_msg)
                 print("Debug message :: " + debug_msg)
+                debug_msg = f'Debugging secret type $$::$$ "{kwargs["type"]}"'
+                print(debug_msg)
                 return True
         except TypeError:
             # Skipping non-compatible filters
