@@ -377,8 +377,8 @@ def _scan_line(
 
 
 def _is_filtered_out(required_filter_parameters: Iterable[str], **kwargs: Any) -> bool:
-    print("Plugin ##::##" + str(kwargs))
     for filter_fn in get_filters_with_parameter(*required_filter_parameters):
+        print("FIlter ::###" + filter_fn)
         try:
             if call_function_with_arguments(filter_fn, **kwargs):
                 if 'secret' in kwargs:
