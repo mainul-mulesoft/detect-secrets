@@ -385,7 +385,7 @@ def _is_filtered_out(required_filter_parameters: Iterable[str], **kwargs: Any) -
                 debug_msg = f'Debugging secret type $$::$$ "{kwargs["type"]}"'
                 print(debug_msg)
                     
-                if kwargs["secret"] == "Secret Keyword":
+                if kwargs["type"] == "Secret Keyword":
                     return False
                 elif 'secret' in kwargs:
                     debug_msg = f'Skipping "{kwargs["secret"]}" due to `{filter_fn.path}`.'
