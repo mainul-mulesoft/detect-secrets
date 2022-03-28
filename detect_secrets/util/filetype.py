@@ -21,8 +21,7 @@ class FileType(Enum):
     INI = 15
     PROPERTIES = 16
     TOML = 17
-    XML = 18
-    OTHER = 19
+    OTHER = 18
 
 
 def determine_file_type(filename: str) -> FileType:
@@ -51,6 +50,5 @@ def determine_file_type(filename: str) -> FileType:
         '.cf': FileType.CONFIG,
         '.ini': FileType.INI,
         '.properties': FileType.PROPERTIES,
-        '.toml': FileType.TOML,
-        '.xml': FileType.XML
+        '.toml': FileType.TOML
     }.get(file_extension, FileType.OTHER)
