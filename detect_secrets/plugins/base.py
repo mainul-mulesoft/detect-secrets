@@ -62,7 +62,6 @@ class BasePlugin(metaclass=ABCMeta):
         return output
 
     def verify(self, secret: str) -> VerifiedResult:
-        print("Secret File name ::" + secret)
         return VerifiedResult.UNVERIFIED
 
     def json(self) -> Dict[str, Any]:
