@@ -51,10 +51,6 @@ class BasePlugin(metaclass=ABCMeta):
         """This examines a line and finds all possible secret values in it."""
         output = set()
         for match in self.analyze_string(line, **kwargs):   # type: ignore
-            print("Secret Type ::::::: " + self.secret_type)
-            print("Secret filename ::::::: " + filename)
-            print("Secret match ::::::: " + match)
-            print("Secret line_number ::::::: " + str(line_number))
             output.add(
                 PotentialSecret(
                     type=self.secret_type,
