@@ -152,10 +152,6 @@ def scan_file(filename: str) -> Generator[PotentialSecret, None, None]:
                 lines=list(enumerate(lines, start=1)),
                 filename=filename,
             ):
-                print("Secret File name ::" + secret.filename)
-                print("Secret line ::" + str(secret.line_number))
-                print("Secret is_verified ::" + str(secret.is_verified))
-                print("Secret type ::" + str(secret.type))
                 has_secret = True
                 yield secret
 
@@ -377,6 +373,7 @@ def _is_filtered_out(required_filter_parameters: Iterable[str], **kwargs: Any) -
         try:
             if call_function_with_arguments(filter_fn, **kwargs):
                 if kwargs["type"] == "Secret Keyword":
+                    # Flagging as breach of secret in case it matches secret keywords
                     return False
                 elif 'secret' in kwargs:
                     debug_msg = f'Skipping "{kwargs["secret"]}" due to `{filter_fn.path}`.'

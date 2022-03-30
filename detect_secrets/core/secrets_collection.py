@@ -293,8 +293,6 @@ class SecretsCollection:
         # We want to create a copy to follow convention and adhere to the principle
         # of least surprise.
         output = SecretsCollection()
-        print("Printing output #######" + str(output))
-
         for filename in other.files:
             if filename not in self.files:
                 continue
